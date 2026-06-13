@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const DB_PATH = path.join(__dirname, '../../reports/db.json');
+const DB_PATH = path.join(__dirname, '../reports/db.json');
 
 function loadDb() {
   if (!fs.existsSync(DB_PATH)) return { reports: [] };
