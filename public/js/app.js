@@ -11,6 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
   loadView('dashboard');
 });
 
+/* ─── Mobile Sidebar ────────────────────────────────────────────────────── */
+function toggleSidebar() {
+  const sidebar = document.querySelector('.sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+  } else {
+    sidebar.classList.add('open');
+    overlay.classList.add('visible');
+  }
+}
+
+function closeSidebar() {
+  document.querySelector('.sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('visible');
+}
+
 /* ─── Navigation ────────────────────────────────────────────────────────── */
 function navigate(view) {
   currentView = view;
@@ -19,6 +38,7 @@ function navigate(view) {
   document.getElementById(`view-${view}`)?.classList.add('active');
   document.querySelector(`[data-view="${view}"]`)?.classList.add('active');
   closeDetail();
+  closeSidebar();
   loadView(view);
 }
 
